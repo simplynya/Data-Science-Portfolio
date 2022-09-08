@@ -11,7 +11,7 @@ library(ggplot2)
 install.packages("gridExtra")
 library("gridExtra")
 
-
+#EVALUATION 4
 #Visualization and Table
 #Here each number is counted to find out how many times they were played
 
@@ -95,6 +95,59 @@ ggplot(countPick5) + geom_line(aes(x = Pick5, y = count))
 
 
 
+#EV 5, 6
+#Here I made a new data frame for just the weekend, this answers one of the
+#Evaluation questions
+
+
+CFL_lotteryWeekend<- filter(CFL_lottery, Weekday %in% c("Saturday", "Sunday"))
+
+#What is the most popular number in all the picks for the weekend
+weekendMAxCB<-names(which.max(table(CFL_lotteryWeekend$CB)))  
+
+weekendMaxPk1<-names(which.max(table(CFL_lotteryWeekend$Pick1))) 
+
+weekendMaxPk2<- names(which.max(table(CFL_lotteryWeekend$Pick2))) 
+
+weekendMaxPk3<- names(which.max(table(CFL_lotteryWeekend$Pick3))) 
+
+weekendMaxPk4<- names(which.max(table(CFL_lotteryWeekend$Pick4))) 
+
+weekendMaxPk5<- names(which.max(table(CFL_lotteryWeekend$Pick5))) 
+
+#Making a saved data frame
+weekendMaxplay<- data.frame(weekendMAxCB,weekendMaxPk1, weekendMaxPk2, weekendMaxPk3, weekendMaxPk4, weekendMaxPk5)
+my_pets %>% group_by(Name, Animal) %>% summarize(count = n())
+
+
+
+
+#EV 1, 2
+  
+#This looks at multiple duplicates in numbers playing together the most.  
+CFL_lottery$duplicatePlay <- 1
+duplicatePlay6<- aggregate(duplicatePlay ~ CB + Pick1 + Pick2 + Pick3 + Pick4 + Pick5,CFL_lottery, FUN = sum)
+
+CFL_lottery$duplicatePlay_5 <- 1
+duplicatePlay5<-aggregate(duplicatePlay_5 ~ Pick1 + Pick2 + Pick3 + Pick4 + Pick5,CFL_lottery, FUN = sum)  
+  
+CFL_lottery$duplicatePlay_4 <- 1
+duplicatePlay4<-aggregate(duplicatePlay_4 ~ Pick1 + Pick2 + Pick3 + Pick4,CFL_lottery, FUN = sum)%>%
+arrange(desc(duplicatePlay_4))
+  
+CFL_lottery$duplicatePlay_3 <- 1
+duplicatePlay3<-aggregate(duplicatePlay_3 ~ Pick1 + Pick2 + Pick3,CFL_lottery, FUN = sum)%>%
+  arrange(desc(duplicatePlay_3))
+
+CFL_lottery$duplicatePlay_2 <- 1
+duplicatePlay2<-aggregate(duplicatePlay_2 ~ Pick1 + Pick2,CFL_lottery, FUN = sum)%>%
+  arrange(desc(duplicatePlay_2))
+
+CFL_lottery$duplicatePlay_1 <- 1
+duplicatePlay1<-aggregate(duplicatePlay_1 ~ Pick1 + CB,CFL_lottery, FUN = sum)%>%
+  arrange(desc(duplicatePlay_1))
+
+
 
 #This looks at the days that had the most wins vs loses
 #Keep in mind the game started off playing on Mondays and Thursdays
@@ -175,7 +228,7 @@ ggplot(yr2021_Saturday, aes(Date)) +
 
 
 
-
+I am 
 
 
 
