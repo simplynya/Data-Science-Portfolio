@@ -117,8 +117,6 @@ weekendMaxPk5<- names(which.max(table(CFL_lotteryWeekend$Pick5)))
 
 #Making a saved data frame
 weekendMaxplay<- data.frame(weekendMAxCB,weekendMaxPk1, weekendMaxPk2, weekendMaxPk3, weekendMaxPk4, weekendMaxPk5)
-my_pets %>% group_by(Name, Animal) %>% summarize(count = n())
-
 
 
 
@@ -226,9 +224,6 @@ ggplot(yr2021_Saturday, aes(Date)) +
   theme(legend.position="top")
 
 
-
-
-I am 
 
 
 
